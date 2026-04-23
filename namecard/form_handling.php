@@ -1,3 +1,3 @@
 <?php
-Form handled
+print("Form handled");
 ?>
