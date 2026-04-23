@@ -55,10 +55,10 @@
 <body>
 
     <div class="name-card">
-        <div class="full-name">Taylor Morgan</div>
-        <div class="position">Lead Project Manager</div>
+        <div class="full-name"><?php $_GET["fullname"]</div>
+        <div class="position">$_GET["position"]</div>
         <div class="divider"></div>
-        <div class="gender">Gender: Non-binary</div>
+        <div class="gender">Gender: $_GET["gender"]</div>
     </div>
 
 </body>
