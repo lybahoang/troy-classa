@@ -1,4 +1,4 @@
 <?php
-print("Form handled");
-echo "Name: " $_GET["fullname"];
+print("Form handled<br>");
+echo "Name: " . $_GET["fullname"];
 ?>
