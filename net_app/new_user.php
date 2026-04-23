@@ -13,8 +13,16 @@
 </head>
 <body>
 
+    // Check if the form was submitted using POST.
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        print("Information received. Process it");
+        echo "<h3>Submitted Information:</h3>";
+        echo "<strong>Username:</strong> " . $username . "<br>";
+        echo "<strong>Full Name:</strong> " . $fullname . "<br>";
+        echo "<strong>Password:</strong> " . $password;
+    }
     <h2>User Registration</h2>
-    <form action="submit.php" method="POST">
+    <form action="/net_app/newuser.php" method="POST">
         
         <div class="form-group">
             <label for="username">Username (Max 20 chars):</label>
