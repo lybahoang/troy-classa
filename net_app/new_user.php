@@ -17,9 +17,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print("Information received. Process it");
         echo "<h3>Submitted Information:</h3>";
-        echo "<strong>Username:</strong> " . $username . "<br>";
-        echo "<strong>Full Name:</strong> " . $fullname . "<br>";
-        echo "<strong>Password:</strong> " . $password;
+        echo "<strong>Username:</strong> " . $_POST["username"] . "<br>";
+        echo "<strong>Full Name:</strong> " . $_POST["fullname"] . "<br>";
+        echo "<strong>Password:</strong> " . $_POST["password"];
     }
     ?>
     <h2>User Registration</h2>
@@ -37,7 +37,7 @@
 
         <div class="form-group">
             <label for="password">Password (Max 10 chars):</label>
-            <input type="password" id="password" name="password" maxlength="10" required>
+            <input type="text" id="password" name="password" maxlength="10" required>
         </div>
 
         <button type="submit">Register</button>
