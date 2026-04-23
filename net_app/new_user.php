@@ -13,6 +13,11 @@
 </head>
 <body>
     <?php
+    $host = "0.0.0.0";
+    $user = "dung";
+    $pass = "dung@1977";
+    $dbname = "mysocialnet";
+
     // Check if the form was submitted using POST.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print("Information received. Process it");
@@ -20,6 +25,11 @@
         echo "<strong>Username:</strong> " . $_POST["username"] . "<br>";
         echo "<strong>Full Name:</strong> " . $_POST["fullname"] . "<br>";
         echo "<strong>Password:</strong> " . $_POST["password"];
+
+        $conn = new mysqli($host, $user, $pass, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: ", .$conn->connect_error);
+        }
     }
     ?>
     <h2>User Registration</h2>
