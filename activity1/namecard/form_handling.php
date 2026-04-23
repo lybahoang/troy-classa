@@ -55,10 +55,10 @@
 <body>
 
     <div class="name-card">
-        <div class="full-name"><?php echo $_GET["fullname"] ?></div>
-        <div class="position"><?php echo $_GET["position"] ?></div>
+        <div class="full-name"><?php echo $_GET["fullname"]; ?></div>
+        <div class="position"><?php echo $_GET["position"]; ?></div>
         <div class="divider"></div>
-        <div class="gender"><?php echo "Gender: " $_GET["gender"] ?></div>
+        <div class="gender"><?php echo "Gender: " . $_GET["gender"]; ?></div>
     </div>
 
 </body>
