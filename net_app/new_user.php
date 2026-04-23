@@ -23,7 +23,7 @@
     }
     ?>
     <h2>User Registration</h2>
-    <form action="/net_app/new_user.php" method="POST">
+    <form action="/troy-classa/net_app/new_user.php" method="POST">
         
         <div class="form-group">
             <label for="username">Username (Max 20 chars):</label>
