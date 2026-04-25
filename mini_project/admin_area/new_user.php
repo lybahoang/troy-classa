@@ -1,6 +1,35 @@
 <?php
+require_once("../db.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	echo "New user registered. Process it";
+    // Get the user data from the input form.
+    $username = $_POST['username'] ?? '';
+    $fullname = $_POST['fullname'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $description = $_POST['description'] ?? '';
+
+	// Check if the username, fullname, and password are filled.
+    if (!$username || !$fullname || !$password) {
+        die("Missing required fields");
+    }
+
+    // Hash the password before insert into the database.
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Prepare SQL command string (IMPORTANT: prevents SQL injection)
+    $stmt = $conn->prepare(
+    "INSERT INTO accounts (username, fullname, password, description)
+     VALUES (?, ?, ?, ?)"
+);
+    $stmt->bind_param("ssss", $username, $fullname, $hashedPassword, $description);
+
+    // Execute the SQL command.
+    $conn = db_conn();
+    if ($conn->execute($stmt)) {
+        echo "User registered successfully";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
 }
 ?>
 <html>
