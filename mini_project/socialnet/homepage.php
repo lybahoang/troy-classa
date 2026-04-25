@@ -61,7 +61,7 @@ if (!$username) {
     </nav>
 
     <header id="home" class="hero">
-        <h1>Welcome to <?= $fullname ?></h1>
+        <h1>Welcome <?= $fullname ?></h1>
         <p>Your one-stop solution for professional web services and creative designs.</p>
     </header>
 
