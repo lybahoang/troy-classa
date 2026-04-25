@@ -50,7 +50,7 @@ if (!isset($_SESSION['username'])) {
 <body>
 
     <nav>
-        <div class="logo">Simple Social Network | Homepage</div>
+        <div class="logo">Simple Social Network | Home</div>
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>

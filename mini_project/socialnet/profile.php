@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
 
 <body>
     <nav>
-        <div class="logo">Simple Social Network | Profile page</div>
+        <div class="logo">Simple Social Network | Profile</div>
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
