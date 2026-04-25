@@ -55,7 +55,7 @@ if (!isset($_SESSION['username'])) {
 
     <h1>Profile of <?= $_SESSION['username'] ?></h1>
     <div><p><strong>Fullname: </strong> <?= $fullname ?></p></div>
-    <div><p><strong>Description: </strong> <?= $description ?></p></div>
+    <div><p><strong>Description: </strong></p></div>
     <?= $description ?>
 </body>
 </html>
