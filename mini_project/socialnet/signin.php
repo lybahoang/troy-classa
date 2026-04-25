@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo "A login trial is performed. Need to process it";
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
