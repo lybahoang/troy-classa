@@ -1,3 +1,22 @@
+<?php
+require_once("../db.php");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the username and password from the input form.
+    $u_username = $_POST['username'];
+    $u_password = $_POST['password'];
+
+    // Query the database to get the user account.
+    $rows = db_query("SELECT username, password FROM accounts WHERE username = '" . $username . "'");
+    if (count($rows) > 0) {
+        $result = password_verify($u_password, $rows['password']);
+        if ($result) {
+            echo "Login successfully";
+        }
+    } else {
+        echo "Login unsuccessfully. Invalid username or password";
+    }
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,13 +34,6 @@
     </style>
 </head>
 <body>
-    <div>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        echo "A login trial is performed. Need to process it";
-    }
-    ?>
-    </div>
     <div class="login-container">
         <h2>Sign In</h2>
         <form action="signin.php" method="POST">
