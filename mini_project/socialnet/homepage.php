@@ -6,7 +6,7 @@ require_once("../db.php");
 <?php
 $username = $_SESSION['username'] ?? '';
 $fullname = "";
-if ($username) {
+if (!$username) {
     // Do not sign it yet.
     header("Location: signin.php");
     exit();
