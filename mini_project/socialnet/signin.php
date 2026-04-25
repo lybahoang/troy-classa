@@ -1,6 +1,9 @@
 <?php
-require_once("../db.php");
+session_start();
+?>
 
+<?php
+require_once("../db.php");
 $message = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -14,8 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $result = password_verify($u_password, $rows[0]['password']);
         if ($result)
-        {
-            $message = "Login successfully";
+        {   
+            // Store the username in a session.
+            $_SESSION['username'] = $u_username;
+
+            // REDIRECT to homepage.php
+            header("Location: homepage.php");
+            exit();
+            //$message = "Login successfully";
         }
         else
         {
