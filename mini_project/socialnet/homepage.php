@@ -22,7 +22,7 @@ session_start();
         /* Hero Section */
         .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placeholder.com'); background-size: cover; color: white; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 600px; }
+        .hero p { font-size: 1.2rem; max-width: 400px; }
 
         /* Responsive Design */
         @media (max-width: 600px) {
