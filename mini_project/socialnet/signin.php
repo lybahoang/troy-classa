@@ -6,11 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $u_password = $_POST['password'];
 
     // Query the database to get the user account.
-    $rows = db_query("SELECT username, password FROM accounts WHERE username = '" . $username . "'");
+    $rows = db_query("SELECT username, password FROM accounts WHERE username = '" . $u_username . "'");
     if (count($rows) > 0) {
-        $result = password_verify($u_password, $rows['password']);
+        $result = password_verify($u_password, $rows[0]['password']);
         if ($result) {
             echo "Login successfully";
+        } else {
+            echo "Login unsuccessfully. Invalid username or password";
         }
     } else {
         echo "Login unsuccessfully. Invalid username or password";
