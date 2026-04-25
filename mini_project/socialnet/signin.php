@@ -18,9 +18,13 @@
 <body>
     <div class="login-container">
         <h2>Sign In</h2>
-        <form action="#">
-            <div class="form-group"><label for="email">Username: </label><input type="text" id="username" name="username" required></div>
-            <div class="form-group"><label for="password">Password</label><input type="password" id="password" name="password" required></div>
+        <form action="signin.php" method="POST">
+            <div class="form-group">
+                <label for="email">Username</label>
+                <input type="text" id="username" name="username" required></div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required></div>
             <button type="submit">Login</button>
         </form>
     </div>
