@@ -4,28 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Entry</title>
+    <title>Simple Social Network | Setting</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f4f4f9; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
-        label { display: block; margin-bottom: 10px; font-weight: bold; }
-        textarea { width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; box-sizing: border-box; font-size: 1rem; }
-        button { margin-top: 15px; width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
-        button:hover { background-color: #218838; }
-
-        /* Basic Reset */
+        /* Reset and Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; color: #333; }
 
-        /* Navigation Bar Styles */
-        nav { background: #333; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        /* Navigation Bar */
+        nav { background: #333; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5rem; font-weight: bold; }
         .nav-links { list-style: none; display: flex; gap: 2rem; }
         .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: #007bff; }
+
+        /* Main Content Container */
+        .main-content { display: flex; justify-content: center; align-items: flex-start; padding: 50px 20px; min-height: 80vh; }
+        
+        /* Form Card */
+        .form-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        
+        h3 { margin-bottom: 15px; font-size: 1.2rem; color: #444; }
+        
+        textarea { width: 100%; height: 200px; padding: 15px; border: 1px solid #ddd; border-radius: 4px; resize: none; font-size: 1rem; margin-bottom: 20px; }
+        
+        /* Green Save Button from Image */
+        .save-btn { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        .save-btn:hover { background-color: #218838; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            nav { flex-direction: column; gap: 1rem; text-align: center; }
+            .nav-links { gap: 1rem; font-size: 0.9rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">Simple Social Network | Setting</div>
         <ul class="nav-links">
@@ -35,16 +49,15 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <!-- The form uses POST to send data to a processing script -->
-        <form action="setting.php" method="POST">
-            <label for="content">Enter description:</label>
-            <textarea id="content" name="content" placeholder="Write something here..." required></textarea>
-            <button type="submit">Save</button>
-        </form>
+    <div class="main-content">
+        <div class="form-container">
+            <form action="save_description.php" method="POST">
+                <h3>Enter description:</h3>
+                <textarea name="description" placeholder="Write something here..." required></textarea>
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
     </div>
+
 </body>
 </html>
-
-
-
