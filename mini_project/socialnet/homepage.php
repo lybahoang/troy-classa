@@ -4,15 +4,14 @@ require_once("../db.php");
 ?>
 
 <?php
-$username = $_SESSION['username'] ?? '';
 $fullname = "";
-if (!$username) {
+if (!isset($_SESSSION['username'])) {
     // Do not sign it yet.
     header("Location: signin.php");
     exit();
 } else {
     // Take the user full name in the database.
-    $result = db_query("SELECT fullname from accounts WHERE username = '$username'");
+    $result = db_query("SELECT fullname from accounts WHERE username = '" . $_SESSION['username'] . "'");
     if (count($result) > 0) {
         $fullname = $result[0]['fullname'];
     }
