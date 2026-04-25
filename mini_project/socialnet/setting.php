@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])) {
         $new_description = $_POST['description'];
         db_execute("UPDATE accounts SET description = '" . $new_description . "' WHERE username = '". $_SESSION['username'] . "'");
     }
-    $result = $db_query("SELECT description FROM accounts WHERE username = '" . $_SESSION['username'] . "'");
+    $result = db_query("SELECT description FROM accounts WHERE username = '" . $_SESSION['username'] . "'");
     if (count($result) > 0) {
         $old_description = $result[0]['description'];
     }
