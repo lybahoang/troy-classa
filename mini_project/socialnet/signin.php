@@ -1,21 +1,30 @@
 <?php
 require_once("../db.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+$message = "";
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
     // Get the username and password from the input form.
     $u_username = $_POST['username'];
     $u_password = $_POST['password'];
 
     // Query the database to get the user account.
     $rows = db_query("SELECT username, password FROM accounts WHERE username = '" . $u_username . "'");
-    if (count($rows) > 0) {
+    if (count($rows) > 0)
+    {
         $result = password_verify($u_password, $rows[0]['password']);
-        if ($result) {
-            echo "Login successfully";
-        } else {
-            echo "Login unsuccessfully. Invalid username or password";
+        if ($result)
+        {
+            $message = "Login successfully";
         }
-    } else {
-        echo "Login unsuccessfully. Invalid username or password";
+        else
+        {
+            $message = "Login unsuccessfully. Invalid username or password";
+        }
+    }
+    else
+    {
+        $message = "Login unsuccessfully. Invalid username or password";
     }
 }
 ?>
@@ -33,6 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         input { width: 100%; padding: .75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
         button { width: 100%; padding: .75rem; background-color: #007bff; border: none; border-radius: 4px; color: white; cursor: pointer; }
         button:hover { background-color: #0056b3; }
+        .msg {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required></div>
             <button type="submit">Login</button>
+
+            <?php if ($message): ?>
+                <p class="msg"><?= $message ?></p>
+            <?php endif; ?>
         </form>
     </div>
 </body>
