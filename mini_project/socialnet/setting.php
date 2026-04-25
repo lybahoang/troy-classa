@@ -1,4 +1,25 @@
 <?php // This page edit profile page by changing the description in the account ?>
+<?php
+session_start();
+require_once("../db.php");
+?>
+
+<?php
+$old_description = "";
+if (!isset($_SESSION['username'])) {
+    header("Location: signin.php");
+    exit();
+} else {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $new_description = $_POST['description'];
+        db_execute("UPDATE accounts SET description = '" . $new_description . "' WHERE username = '". $_SESSION['username'] . "'");
+    }
+    $result = $db_query("SELECT description FROM accounts WHERE username = '" . $_SESSION['username'] . "'");
+    if (count($result) > 0) {
+        $old_description = $result[0]['description'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +66,7 @@
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
+            <li><a href="setting.php">Setting</a></li>
             <li><a href="signout.php">Sign out</a></li>
         </ul>
     </nav>
@@ -52,8 +74,8 @@
     <div class="main-content">
         <div class="form-container">
             <form action="save_description.php" method="POST">
-                <h3>Enter description:</h3>
-                <textarea name="description" placeholder="Write something here..." required></textarea>
+                <h3>Enter description</h3>
+                <textarea name="description" required><?= $old_description ?></textarea>
                 <button type="submit" class="save-btn">Save</button>
             </form>
         </div>
