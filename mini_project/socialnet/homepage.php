@@ -51,7 +51,7 @@ if (!$username) {
 <body>
 
     <nav>
-        <div class="logo">Simple Social Network</div>
+        <div class="logo">Simple Social Network | Homepage</div>
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
