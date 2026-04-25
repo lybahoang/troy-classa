@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	echo "New user registered. Process it";
+}
+?>
 <html>
 <head>
     <title>Register</title>
@@ -18,7 +22,7 @@
     <input type="text" name="password" required><br><br>
 
     <label>Description:</label><br>
-    <textarea name="description"></textarea><br><br>
+    <textarea rows="3" cols="40" name="description"></textarea><br><br>
 
     <button type="submit">Register</button>
 </form>
