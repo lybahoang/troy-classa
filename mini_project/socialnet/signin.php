@@ -1,8 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "A login trial is performed. Need to process it";
-}
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo "A login trial is performed. Need to process it";
+    }
+    ?>
     <div class="login-container">
         <h2>Sign In</h2>
         <form action="signin.php" method="POST">
