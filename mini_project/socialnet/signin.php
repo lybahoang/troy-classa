@@ -15,11 +15,13 @@
     </style>
 </head>
 <body>
+    <div>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "A login trial is performed. Need to process it";
     }
     ?>
+    </div>
     <div class="login-container">
         <h2>Sign In</h2>
         <form action="signin.php" method="POST">
