@@ -1,5 +1,22 @@
 <?php
 session_start();
+require_once("../db.php");
+?>
+
+<?php
+$username = $_SESSION['username'] ?? '';
+$fullname = "";
+if ($username) {
+    // Do not sign it yet.
+    header("Location: signin.php");
+    exit():
+} else {
+    // Take the user full name in the database.
+    $result = db_query("SELECT fullname from accounts WHERE username = '$username'");
+    if (count($result) > 0) {
+        $fullname = $result[0]['fullname'];
+    }
+}
 ?>
 
 <html lang="en">
@@ -20,9 +37,9 @@ session_start();
         .nav-links a:hover { color: #007bff; }
 
         /* Hero Section */
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placeholder.com'); background-size: cover; color: white; padding: 0 20px; }
+        .hero { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placeholder.com'); background-size: cover; color: white; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 400px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; }
 
         /* Responsive Design */
         @media (max-width: 600px) {
@@ -34,7 +51,7 @@ session_start();
 <body>
 
     <nav>
-        <div class="logo">BrandName</div>
+        <div class="logo">Simple Social Network</div>
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
@@ -44,7 +61,7 @@ session_start();
     </nav>
 
     <header id="home" class="hero">
-        <h1>Welcome to Our Site</h1>
+        <h1>Welcome to <?= $fullname ?></h1>
         <p>Your one-stop solution for professional web services and creative designs.</p>
     </header>
 
