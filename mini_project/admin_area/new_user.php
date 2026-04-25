@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare SQL command string (IMPORTANT: prevents SQL injection)
+    $conn = db_conn();
     $stmt = $conn->prepare(
     "INSERT INTO accounts (username, fullname, password, description)
      VALUES (?, ?, ?, ?)"
@@ -23,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ssss", $username, $fullname, $hashedPassword, $description);
 
     // Execute the SQL command.
-    $conn = db_conn();
-    if ($conn->execute($stmt)) {
+    if ($stmt->execute()) {
         echo "User registered successfully";
     } else {
         echo "Error: " . $stmt->error;
     }
     $stmt->close();
+    $conn->close();
 }
 ?>
 <html>
