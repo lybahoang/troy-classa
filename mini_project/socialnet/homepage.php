@@ -9,7 +9,7 @@ $fullname = "";
 if ($username) {
     // Do not sign it yet.
     header("Location: signin.php");
-    exit():
+    exit();
 } else {
     // Take the user full name in the database.
     $result = db_query("SELECT fullname from accounts WHERE username = '$username'");
