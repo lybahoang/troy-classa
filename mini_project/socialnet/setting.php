@@ -73,7 +73,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="main-content">
         <div class="form-container">
-            <form action="save_description.php" method="POST">
+            <form action="setting.php" method="POST">
                 <h3>Enter description</h3>
                 <textarea name="description" required><?= $old_description ?></textarea>
                 <button type="submit" class="save-btn">Save</button>
