@@ -3,7 +3,7 @@ session_start();
 require_once("../db.php");
 ?>
 
-<?php
+<!-- <?php
 $fullname = "";
 if (!isset($_SESSION['username'])) {
     // Do not sign it yet.
@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
         $fullname = $result[0]['fullname'];
     }
 }
-?>
+?> -->
 
 <html lang="en">
 <head>
@@ -48,6 +48,22 @@ if (!isset($_SESSION['username'])) {
     </style>
 </head>
 <body>
+
+    <?php
+    $fullname = "";
+    if (!isset($_SESSION['username'])) {
+        // Do not sign it yet.
+        header("Location: signin.php");
+        exit();
+    } else {
+        // Take the user full name in the database.
+        $result = db_query("SELECT fullname from accounts WHERE username = '" . $_SESSION['username'] . "'");
+        if (count($result) > 0) {
+            $row = $result->fetch_assoc();
+            $fullname = $result['fullname'];
+        }
+    }
+    ?>
 
     <nav>
         <div class="logo">Simple Social Network | Home</div>
