@@ -59,13 +59,15 @@ if (!isset($_SESSION['username'])) {
         // Take the user full name in the database.
         $result = db_query("SELECT fullname from accounts WHERE username = '" . $_SESSION['username'] . "'");
         if (count($result) > 0) {
-            $row = $result->fetch_assoc();
-            $fullname = $result['fullname'];
+            $fullname = $result[0]['fullname'];
         }
     }
     ?>
+    <?php
+        include_once("menubar.php");
+    ?>
 
-    <nav>
+    <!-- <nav>
         <div class="logo">Simple Social Network | Home</div>
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
@@ -73,7 +75,7 @@ if (!isset($_SESSION['username'])) {
             <li><a href="setting.php">Setting</a></li>
             <li><a href="signout.php">Sign out</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <header id="home" class="hero">
         <h1>Welcome <?= $fullname ?></h1>
